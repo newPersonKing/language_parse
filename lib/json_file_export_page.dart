@@ -218,4 +218,5 @@ class WordTransEntity {
   var word = "";
   var key = "";
   var translatorMap = <String,String>{};
+  var isEdit = false;
 }

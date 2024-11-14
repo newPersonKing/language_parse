@@ -35,7 +35,7 @@ class _JsonEditPageState extends State<JsonEditPage>{
       if(searchController.text.isEmpty){
         showList = widget.languageInfo.valueList;
       }else {
-        showList = widget.languageInfo.valueList.where((item)=>item.key.contains(searchController.text)).toList();
+        showList = widget.languageInfo.valueList.where((item)=>item.key.toLowerCase().contains(searchController.text.toLowerCase())).toList();
       }
       setState(() {
 

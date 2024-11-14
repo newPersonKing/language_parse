@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage>{
               ),
               height: 50,
               alignment: Alignment.center,
-              child: const Text("文件导入"),
+              child: const Text("文件导入(每个需要翻译的内容单独占一行)"),
             ),
           ),
           ...languageList.map((item)=>GestureDetector(
