@@ -109,17 +109,7 @@ class _JsonEditPageState extends State<JsonEditPage>{
       for (var item in valueList) {
         map[item.key] = item.value;
       }
-      // var saveJson = "{\n";
-      // for(var i = 0 ; i < valueList.length; i++){
-      //   var item = valueList[i];
-      //   if( i < valueList.length - 1){
-      //     saveJson += "\"${item.key}\":\"r${item.value}\",\n";
-      //   }else {
-      //     saveJson += "\"${item.key}\":\"${item.value}\"\n";
-      //   }
-      //
-      // }
-      // 创建一个 JsonEncoder 实例，并设置 prettyPrint 为 true
+
       JsonEncoder encoder = const JsonEncoder.withIndent('  '); // 使用两个空格进行缩进
 
       // 序列化 Dart 对象为 JSON 字符串，并指定 prettyPrint

@@ -5,6 +5,7 @@ import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:language_parse/json_file_export_page.dart';
 
 import 'json_add_page.dart';
 import 'json_edit_page.dart';
@@ -64,6 +65,25 @@ class _HomePageState extends State<HomePage>{
               height: 50,
               alignment: Alignment.center,
               child: const Text("新增"),
+            ),
+          ),
+          const SizedBox(height: 15,),
+          if(isLoadFinish) GestureDetector(
+            onTap: (){
+              Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                return JsonFileExportPage(languageList: languageList,);
+              }));
+            },
+            child:  Container(
+              padding: const EdgeInsets.all(10),
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.circular(8)
+              ),
+              height: 50,
+              alignment: Alignment.center,
+              child: const Text("文件导入"),
             ),
           ),
           ...languageList.map((item)=>GestureDetector(

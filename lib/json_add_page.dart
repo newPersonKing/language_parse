@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_styled_toast/flutter_styled_toast.dart';
 import 'package:language_parse/model/json_entity.dart';
-import 'package:toastification/toastification.dart';
 import 'package:translator/translator.dart';
 import 'model/language_info.dart';
 
@@ -142,7 +142,7 @@ class _JsonEditPageState extends State<JsonAddPage>{
         var result = await translator.translate(enTans.text, from: 'en', to: item.language);
         translatorTemp[item.language] = result.text;
       }
-      await Future.wait(widget.allLanguages.map((item)=> transEach(item)));
+      await Future.wait(widget.allLanguages.where((item)=>item.language != 'en').map((item)=> transEach(item)));
     }catch(e){
 
     }
@@ -161,11 +161,7 @@ class _JsonEditPageState extends State<JsonAddPage>{
     writeKey = writeKey.replaceAll("，", "_");
     for (var item in widget.allLanguages) {
       if(item.keyList.contains(writeKey)){
-        toastification.show(
-          context: context, // optional if you use ToastificationWrapper
-          title: Text('${item.language}已经包含相同的key:$key'),
-          autoCloseDuration: const Duration(seconds: 1),
-        );
+        showToast('${item.language}已经包含相同的key:$key',context: context);
         return;
       }
     }
@@ -186,11 +182,7 @@ class _JsonEditPageState extends State<JsonAddPage>{
     }catch(e){
 
     }
-    toastification.show(
-      context: context, // optional if you use ToastificationWrapper
-      title: const Text('保存成功'),
-      autoCloseDuration: const Duration(milliseconds: 500),
-    );
+    showToast("保存成功",context: context);
     setState(() {
       isSave = false;
     });
